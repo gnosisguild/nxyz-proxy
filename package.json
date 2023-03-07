@@ -1,0 +1,20 @@
+{
+  "name": "nxyz-wrapper",
+  "version": "1.0.0",
+  "type": "module",
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.3",
+    "vercel": "^28.16.13"
+  },
+  "private": true,
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel deploy",
+    "format": "prettier --write  '*.{json,js}' 'src/**/*.ts'"
+  },
+  "dependencies": {
+    "@vercel/node": "^2.9.10",
+    "node-fetch": "^3.3.0"
+  }
+}
