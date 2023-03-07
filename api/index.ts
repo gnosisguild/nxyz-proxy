@@ -17,6 +17,9 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     const apiRes = await fetch(requestUrl, options)
     const json = await apiRes.json()
 
+    // CORS
+    res.setHeader('Access-Control-Allow-Origin', '*')
+
     res.status(200).send(json)
   } catch (error: any) {
     console.error(error)
