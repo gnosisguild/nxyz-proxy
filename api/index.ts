@@ -16,12 +16,12 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
     const apiRes = await fetch(requestUrl, options)
     const json = await apiRes.json()
-    const cursor = apiRes.headers.get('X-Doc-Next-Link')
+    const cursor = apiRes.headers.get('X-Doc-Next-Cursor')
     // CORS
     res.setHeader('Access-Control-Allow-Origin', '*')
 
     if (cursor) {
-      res.setHeader('X-Doc-Next-Link', cursor)
+      res.setHeader('X-Doc-Next-Cursor', cursor)
     }
 
     res.status(200).send(json)
