@@ -5,6 +5,9 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const baseUrl = 'https://api.n.xyz'
   const keyUrlParam = `&apikey=${process.env.NXYZ_API_KEY}`
 
+  // CORS
+  res.setHeader('Access-Control-Allow-Origin', '*')
+
   // only allow get requests
   if (req.method !== 'GET') {
     res.status(400).json({ message: 'Not Allowed' })
@@ -17,8 +20,6 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     const apiRes = await fetch(requestUrl, options)
     const json = await apiRes.json()
     const cursor = apiRes.headers.get('X-Doc-Next-Cursor')
-    // CORS
-    res.setHeader('Access-Control-Allow-Origin', '*')
 
     if (cursor) {
       res.setHeader('X-Doc-Next-Cursor', cursor)
